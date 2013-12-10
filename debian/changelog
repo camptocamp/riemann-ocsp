@@ -1,0 +1,5 @@
+riemann-ocsp (0.1-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Marc Fournier <marc.fournier@camptocamp.com>  Tue, 03 Dec 2013 12:17:35 +0100

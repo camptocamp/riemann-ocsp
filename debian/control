@@ -1,0 +1,13 @@
+Source: riemann-ocsp
+Section: net
+Priority: optional
+Maintainer: Marc Fournier <marc.fournier@camptocamp.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: https://github.com/camptocamp/riemann-ocsp
+
+Package: riemann-ocsp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: submit nagios events to riemann
+ send nagios events to riemann using submit_ocsp

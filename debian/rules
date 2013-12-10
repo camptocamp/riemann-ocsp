@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/riemann-ocsp
+
+%:
+	dh $@ --with=golang
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/pkg/* $(GOPATH)/src/* $(GOPATH)/riemann_ocsp
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go get -d
+	go build -o $(GOPATH)/riemann_ocsp
+	mkdir -p $(PKGDIR)/usr/bin
+	cp $(GOPATH)/riemann_ocsp $(PKGDIR)/usr/bin/
+	dh_makeshlibs
+	dh_shlibdeps
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch
+
